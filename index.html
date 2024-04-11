@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+    <head>
+        <title>Español | Lang Search</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="shortcut icon" href="icon.ico"/>
+        <meta charset="UTF-8">
+        <meta name="description" content="Mutli-search tool to make creating flashcards for language learning easier.">
+        <meta name="author" content="Iarla Crewe">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <main class="container">
+            <p>
+                Escribé la palabra en español que desea buscar.
+            </p>
+            <input type="text" id="input-box" autofocus required>
+        </main>
+
+        <script>
+            var input = document.getElementById("input-box");
+
+            document.onkeydown = function(key) {search(key)}
+            function search(key)
+            {
+                var word = encodeURIComponent(input.value);
+                if (key.which != 13) return;                    // Only search if enter key pressed
+                if (word == "") return;                         // Search cannot be empty
+                
+                
+                
+                window.open("https://es.bab.la/ejemplos/espanol/" + word);                          // Example sentences
+                // window.open("https://es.bab.la/diccionario/espanol-ingles/" + word);                // Bilingual dictionary
+                window.open("https://dle.rae.es/" + word);                                          // Native dictionary
+                window.open("https://es.forvo.com/word/" + word + "/#es");                             // Word Pronounciation
+                window.open("https://www.google.es/search?q=" + word + "&tbm=isch&sfr=vfe");        // Google Images
+
+                input.value = "";
+            }
+        </script>
+    </body>
+</html>
